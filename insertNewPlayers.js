@@ -1,26 +1,30 @@
 const pool = require('./db');
 const API_KEY = '63cadfcbd6814c179f045d79c51c96fa';
 
-fetchTeamIds().then(teamIds => {
-  console.log('Team IDs:', teamIds);
-    fetch(`https://api.football-data.org/v4/teams/${teamIds[0]}/`, {
+fetchTeamIds().then((teamPairs => {
+  console.log('Team IDs:', teamPairs);
+  teamPairs.forEach(({id, api_id}) => {
+    fetch(`https://api.football-data.org/v4/teams/${api_id}/`, {
       headers: { 'X-Auth-Token': API_KEY }
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data.squad[0]);
+        let players = data.squad;
+        players.forEach(player => {
+          const playerForInsert = {
+            name: player.name,
+            dateOfBirth: player.dateOfBirth,
+            nationality: player.nationality,
+            position: player.position,
+            team_id: id,
+            api_id: player.id
+          }
+          insertPlayer(playerForInsert);
+        });
       })
       .catch(err => console.error(err));
-});
-// const player = {
-//   id: data.id,
-//   name: `${data.firstName} ${data.lastName}`,
-//   dateOfBirth: data.dateOfBirth,
-//   nationality: data.nationality,
-//   position: data.position,
-// };
-// console.log(player);
-// insertPlayer(player);
+ });
+}));
 
 async function insertPlayer(player){
     const {
@@ -28,13 +32,14 @@ async function insertPlayer(player){
         dateOfBirth,
         nationality,
         position,
-        team_id
+        team_id,
+        api_id
   } = player;
 
   const query = `
-    INSERT INTO players (name, date_of_birth, nationality, position, team_id)
-    VALUES ($1, $2, $3, $4, $5)
-    ON CONFLICT (id) DO UPDATE SET
+    INSERT INTO players (name, date_of_birth, nationality, position, team_id, api_id)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    ON CONFLICT (api_id) DO UPDATE SET
       name = EXCLUDED.name,
       date_of_birth = EXCLUDED.date_of_birth,
       nationality = EXCLUDED.nationality,
@@ -42,7 +47,7 @@ async function insertPlayer(player){
       team_id = EXCLUDED.team_id
   `;
 
-  const values = [name, dateOfBirth, nationality, position, team_id];
+  const values = [name, dateOfBirth, nationality, position, team_id, api_id];
 
   try {
     await pool.query(query, values);
@@ -54,13 +59,12 @@ async function insertPlayer(player){
 
 async function fetchTeamIds(){
   const query = `
-    SELECT api_id FROM teams
+    SELECT id, api_id FROM teams
   `;
 
   try {
     const res = await pool.query(query);
-    const teamIds = res.rows.map(row => row.api_id);
-    return teamIds;
+    return res.rows;
   } catch (error) {
     console.error('Error fetching team IDs:', error);
   }
