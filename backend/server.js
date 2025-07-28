@@ -3,6 +3,7 @@ const pool = require('./database/db');
 const fetchPlayers = require('./api/fetchPlayers');
 const fetchTeams = require('./api/fetchTeams');
 const fetchRandomPlayer = require('./api/fetchRandomPlayer');
+const fetchQuestions = require('./api/fetchQuestions');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -31,6 +32,15 @@ app.get('/players/random/', (req, res) => {
         .then(player => res.json(player))
         .catch(err => {
             console.error('Error fetching random player:', err);
+            res.status(500).send('Internal Server Error');
+        });
+});
+
+app.get('/questions/', (req, res) => {
+    fetchQuestions()
+        .then(questions => res.json(questions))
+        .catch(err => {
+            console.error('Error fetching questions:', err);
             res.status(500).send('Internal Server Error');
         });
 });
