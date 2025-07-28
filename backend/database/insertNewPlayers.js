@@ -12,7 +12,7 @@ fetchTeamIds().then((teamPairs => {
         let players = data.squad;
         players.forEach(player => {
           const playerForInsert = {
-            name: player.name,
+            name: removeSpecialChars(player.name),
             dateOfBirth: player.dateOfBirth,
             nationality: player.nationality,
             position: player.position,
@@ -68,4 +68,11 @@ async function fetchTeamIds(){
   } catch (error) {
     console.error('Error fetching team IDs:', error);
   }
+}
+
+function removeSpecialChars(input) {
+  return input
+    .normalize('NFD') 
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^A-Za-z0-9 ]/g, ''); 
 }

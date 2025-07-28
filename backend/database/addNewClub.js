@@ -1,4 +1,4 @@
-const pool = require('./db');
+const pool = require('../db');
 
 const API_KEY = '63cadfcbd6814c179f045d79c51c96fa';
 

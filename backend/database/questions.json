@@ -1,0 +1,839 @@
+[
+  {
+    "question_text": "Which club plays its home games at Old Trafford?",
+    "option_a": "Chelsea",
+    "option_b": "Manchester United",
+    "option_c": "Liverpool",
+    "option_d": "Arsenal",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Who is nicknamed 'El Fenómeno'?",
+    "option_a": "Cristiano Ronaldo",
+    "option_b": "Zinedine Zidane",
+    "option_c": "Ronaldo Nazário",
+    "option_d": "Ronaldinho",
+    "correct_option": "C",
+    "category": "players"
+  },
+  {
+    "question_text": "Which country won the FIFA World Cup in 2018?",
+    "option_a": "Germany",
+    "option_b": "Brazil",
+    "option_c": "France",
+    "option_d": "Argentina",
+    "correct_option": "C",
+    "category": "history"
+  },
+  {
+    "question_text": "Which team is known as 'The Gunners'?",
+    "option_a": "Arsenal",
+    "option_b": "Tottenham",
+    "option_c": "Everton",
+    "option_d": "Leeds United",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Who has won the most Ballon d'Or awards?",
+    "option_a": "Lionel Messi",
+    "option_b": "Cristiano Ronaldo",
+    "option_c": "Michel Platini",
+    "option_d": "Johan Cruyff",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club has the nickname 'The Blues'?",
+    "option_a": "Chelsea",
+    "option_b": "Everton",
+    "option_c": "Leicester City",
+    "option_d": "Manchester City",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which player is known as 'The Egyptian King'?",
+    "option_a": "Mohamed Salah",
+    "option_b": "Riyad Mahrez",
+    "option_c": "Hakim Ziyech",
+    "option_d": "Sadio Mané",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "Which country hosted the FIFA World Cup in 2006?",
+    "option_a": "Italy",
+    "option_b": "Germany",
+    "option_c": "Brazil",
+    "option_d": "South Africa",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "What is the maximum number of substitutes allowed in a Premier League match since 2022?",
+    "option_a": "3",
+    "option_b": "4",
+    "option_c": "5",
+    "option_d": "6",
+    "correct_option": "C",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which player is known as 'CR7'?",
+    "option_a": "Cristiano Ronaldo",
+    "option_b": "Carlos Tevez",
+    "option_c": "Cafu",
+    "option_d": "Ricardo Quaresma",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "Which Italian club is nicknamed 'The Old Lady'?",
+    "option_a": "AC Milan",
+    "option_b": "Juventus",
+    "option_c": "Inter Milan",
+    "option_d": "Napoli",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Who won the UEFA Champions League in 2020?",
+    "option_a": "Liverpool",
+    "option_b": "Bayern Munich",
+    "option_c": "Real Madrid",
+    "option_d": "PSG",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "What is the standard length of a football match?",
+    "option_a": "80 minutes",
+    "option_b": "90 minutes",
+    "option_c": "100 minutes",
+    "option_d": "70 minutes",
+    "correct_option": "B",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which club is Lionel Messi currently playing for (as of 2025)?",
+    "option_a": "Barcelona",
+    "option_b": "Inter Miami",
+    "option_c": "PSG",
+    "option_d": "Newell's Old Boys",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Which country has won the most FIFA World Cups?",
+    "option_a": "Germany",
+    "option_b": "Italy",
+    "option_c": "Brazil",
+    "option_d": "Argentina",
+    "correct_option": "C",
+    "category": "history"
+  },
+  {
+    "question_text": "Who scored the 'Hand of God' goal?",
+    "option_a": "Diego Maradona",
+    "option_b": "Pelé",
+    "option_c": "Zinedine Zidane",
+    "option_d": "Romário",
+    "correct_option": "A",
+    "category": "history"
+  },
+  {
+    "question_text": "Which Premier League club has a bird called 'Liverbird' on its crest?",
+    "option_a": "Everton",
+    "option_b": "Liverpool",
+    "option_c": "Tottenham",
+    "option_d": "Norwich City",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which country won the first FIFA World Cup in 1930?",
+    "option_a": "Argentina",
+    "option_b": "Brazil",
+    "option_c": "Uruguay",
+    "option_d": "Italy",
+    "correct_option": "C",
+    "category": "history"
+  },
+  {
+    "question_text": "How many players are on the pitch for one team during a standard match?",
+    "option_a": "9",
+    "option_b": "10",
+    "option_c": "11",
+    "option_d": "12",
+    "correct_option": "C",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which club’s stadium is called ‘Camp Nou’?",
+    "option_a": "Real Madrid",
+    "option_b": "Atletico Madrid",
+    "option_c": "Barcelona",
+    "option_d": "Sevilla",
+    "correct_option": "C",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Who won the Golden Boot at the 2022 FIFA World Cup?",
+    "option_a": "Lionel Messi",
+    "option_b": "Kylian Mbappé",
+    "option_c": "Cristiano Ronaldo",
+    "option_d": "Harry Kane",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Which position does Manuel Neuer play?",
+    "option_a": "Defender",
+    "option_b": "Midfielder",
+    "option_c": "Goalkeeper",
+    "option_d": "Striker",
+    "correct_option": "C",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club is known as ‘The Citizens’?",
+    "option_a": "Manchester City",
+    "option_b": "Leicester City",
+    "option_c": "Chelsea",
+    "option_d": "West Ham United",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which African nation won the AFCON in 2022?",
+    "option_a": "Senegal",
+    "option_b": "Egypt",
+    "option_c": "Morocco",
+    "option_d": "Nigeria",
+    "correct_option": "A",
+    "category": "history"
+  },
+  {
+    "question_text": "How many referees are on the field during a match?",
+    "option_a": "1",
+    "option_b": "2",
+    "option_c": "3",
+    "option_d": "4",
+    "correct_option": "A",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which club is nicknamed ‘The Reds’?",
+    "option_a": "Liverpool",
+    "option_b": "Manchester United",
+    "option_c": "Arsenal",
+    "option_d": "Nottingham Forest",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Who scored the winning goal for Spain in the 2010 World Cup final?",
+    "option_a": "Fernando Torres",
+    "option_b": "David Villa",
+    "option_c": "Andrés Iniesta",
+    "option_d": "Xavi Hernandez",
+    "correct_option": "C",
+    "category": "history"
+  },
+  {
+    "question_text": "Which club’s nickname is ‘The Hammers’?",
+    "option_a": "West Ham United",
+    "option_b": "Southampton",
+    "option_c": "Burnley",
+    "option_d": "Brentford",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "How many goals is a hat-trick?",
+    "option_a": "2",
+    "option_b": "3",
+    "option_c": "4",
+    "option_d": "5",
+    "correct_option": "B",
+    "category": "rules"
+  },
+  {
+    "question_text": "Who won the Ballon d'Or in 2022?",
+    "option_a": "Karim Benzema",
+    "option_b": "Lionel Messi",
+    "option_c": "Robert Lewandowski",
+    "option_d": "Luka Modrić",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "Which country has Lionel Messi represented internationally?",
+    "option_a": "Spain",
+    "option_b": "Brazil",
+    "option_c": "Argentina",
+    "option_d": "Portugal",
+    "correct_option": "C",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club has the motto ‘You’ll Never Walk Alone’?",
+    "option_a": "Celtic",
+    "option_b": "Liverpool",
+    "option_c": "Borussia Dortmund",
+    "option_d": "Bayern Munich",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which country hosted the FIFA World Cup in 2022?",
+    "option_a": "Russia",
+    "option_b": "USA",
+    "option_c": "Qatar",
+    "option_d": "Japan",
+    "correct_option": "C",
+    "category": "history"
+  },
+  {
+    "question_text": "Which club’s stadium is ‘Stamford Bridge’?",
+    "option_a": "Tottenham",
+    "option_b": "Chelsea",
+    "option_c": "Arsenal",
+    "option_d": "West Ham",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Who is known as 'King Eric' at Manchester United?",
+    "option_a": "Eric Bailly",
+    "option_b": "Eric Cantona",
+    "option_c": "Eric Dier",
+    "option_d": "Eric Abidal",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "How many yellow cards lead to a red card?",
+    "option_a": "2",
+    "option_b": "3",
+    "option_c": "4",
+    "option_d": "1",
+    "correct_option": "A",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which player is called ‘The Pharaoh’?",
+    "option_a": "Mohamed Salah",
+    "option_b": "Hossam Hassan",
+    "option_c": "Riyad Mahrez",
+    "option_d": "Samuel Eto’o",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "Who scored the famous bicycle kick for Real Madrid vs Juventus in 2018?",
+    "option_a": "Karim Benzema",
+    "option_b": "Cristiano Ronaldo",
+    "option_c": "Gareth Bale",
+    "option_d": "Luka Modrić",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "Which Italian club plays at San Siro along with AC Milan?",
+    "option_a": "Juventus",
+    "option_b": "Roma",
+    "option_c": "Inter Milan",
+    "option_d": "Napoli",
+    "correct_option": "C",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which player is known for the 'Panenka' penalty?",
+    "option_a": "Antonín Panenka",
+    "option_b": "Zinedine Zidane",
+    "option_c": "Andrea Pirlo",
+    "option_d": "Roberto Baggio",
+    "correct_option": "A",
+    "category": "history"
+  },
+  {
+    "question_text": "What does VAR stand for?",
+    "option_a": "Video Action Replay",
+    "option_b": "Virtual Assistant Referee",
+    "option_c": "Video Assistant Referee",
+    "option_d": "Visual Analysis Review",
+    "correct_option": "C",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which country is Luka Modrić from?",
+    "option_a": "Croatia",
+    "option_b": "Serbia",
+    "option_c": "Slovenia",
+    "option_d": "Bosnia & Herzegovina",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club is nicknamed ‘Los Blancos’?",
+    "option_a": "Real Madrid",
+    "option_b": "Barcelona",
+    "option_c": "Atletico Madrid",
+    "option_d": "Valencia",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which club did Thierry Henry famously play for?",
+    "option_a": "Arsenal",
+    "option_b": "Liverpool",
+    "option_c": "Chelsea",
+    "option_d": "Manchester City",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "How many points do you get for a win in the Premier League?",
+    "option_a": "2",
+    "option_b": "3",
+    "option_c": "4",
+    "option_d": "1",
+    "correct_option": "B",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which club has won the most Champions League titles?",
+    "option_a": "AC Milan",
+    "option_b": "Liverpool",
+    "option_c": "Bayern Munich",
+    "option_d": "Real Madrid",
+    "correct_option": "D",
+    "category": "history"
+  },
+  {
+    "question_text": "Which player is nicknamed ‘The Atomic Flea’?",
+    "option_a": "Diego Maradona",
+    "option_b": "Lionel Messi",
+    "option_c": "Sergio Agüero",
+    "option_d": "Eden Hazard",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Who is the all-time Premier League top scorer?",
+    "option_a": "Wayne Rooney",
+    "option_b": "Sergio Agüero",
+    "option_c": "Alan Shearer",
+    "option_d": "Harry Kane",
+    "correct_option": "C",
+    "category": "history"
+  },
+  {
+    "question_text": "Which national team is known as 'La Roja'?",
+    "option_a": "Portugal",
+    "option_b": "Spain",
+    "option_c": "Chile",
+    "option_d": "Mexico",
+    "correct_option": "B",
+    "category": "national_teams"
+  },
+  {
+    "question_text": "Which goalkeeper is nicknamed 'Gigi'?",
+    "option_a": "Iker Casillas",
+    "option_b": "Gianluigi Buffon",
+    "option_c": "Gianluigi Donnarumma",
+    "option_d": "Fabien Barthez",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Which African player won the Ballon d'Or in 1995?",
+    "option_a": "Samuel Eto'o",
+    "option_b": "George Weah",
+    "option_c": "Didier Drogba",
+    "option_d": "Yaya Touré",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "What is the minimum number of players a team must have on the field to continue a match?",
+    "option_a": "7",
+    "option_b": "8",
+    "option_c": "9",
+    "option_d": "10",
+    "correct_option": "A",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which club is known as 'Rossoneri'?",
+    "option_a": "AC Milan",
+    "option_b": "Inter Milan",
+    "option_c": "Juventus",
+    "option_d": "Roma",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Who scored the fastest goal in World Cup history (11 seconds)?",
+    "option_a": "Hakan Şükür",
+    "option_b": "Clint Dempsey",
+    "option_c": "David Villa",
+    "option_d": "Thierry Henry",
+    "correct_option": "A",
+    "category": "history"
+  },
+  {
+    "question_text": "Which country’s team is nicknamed 'The Three Lions'?",
+    "option_a": "Germany",
+    "option_b": "England",
+    "option_c": "Italy",
+    "option_d": "France",
+    "correct_option": "B",
+    "category": "national_teams"
+  },
+  {
+    "question_text": "Who is the current coach of Manchester City (2025)?",
+    "option_a": "Jürgen Klopp",
+    "option_b": "Pep Guardiola",
+    "option_c": "Carlo Ancelotti",
+    "option_d": "Thomas Tuchel",
+    "correct_option": "B",
+    "category": "coaches"
+  },
+  {
+    "question_text": "Which country hosted the Euro 2016?",
+    "option_a": "Portugal",
+    "option_b": "France",
+    "option_c": "Germany",
+    "option_d": "Italy",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "What color card did referees introduce for substitutions in 1970?",
+    "option_a": "Yellow",
+    "option_b": "Red",
+    "option_c": "Green",
+    "option_d": "Blue",
+    "correct_option": "C",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which player is known as 'El Pistolero'?",
+    "option_a": "Edinson Cavani",
+    "option_b": "Luis Suárez",
+    "option_c": "Diego Forlán",
+    "option_d": "Radamel Falcao",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club is famous for its 'Yellow Wall' supporters?",
+    "option_a": "Borussia Dortmund",
+    "option_b": "Villarreal",
+    "option_c": "Leeds United",
+    "option_d": "Fenerbahçe",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which club did Zinedine Zidane play for before joining Real Madrid?",
+    "option_a": "Juventus",
+    "option_b": "Bordeaux",
+    "option_c": "Monaco",
+    "option_d": "AC Milan",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "How long is halftime in a football match?",
+    "option_a": "10 minutes",
+    "option_b": "12 minutes",
+    "option_c": "15 minutes",
+    "option_d": "20 minutes",
+    "correct_option": "C",
+    "category": "rules"
+  },
+  {
+    "question_text": "Who is Barcelona’s all-time top scorer?",
+    "option_a": "Ronaldinho",
+    "option_b": "Lionel Messi",
+    "option_c": "Luis Suárez",
+    "option_d": "Samuel Eto’o",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club is called 'I Giallorossi'?",
+    "option_a": "AS Roma",
+    "option_b": "Napoli",
+    "option_c": "Lazio",
+    "option_d": "Fiorentina",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which country won Euro 2004?",
+    "option_a": "Portugal",
+    "option_b": "Greece",
+    "option_c": "Spain",
+    "option_d": "Italy",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "What does FIFA stand for?",
+    "option_a": "Federation of International Football Associations",
+    "option_b": "Federal International Football Association",
+    "option_c": "Fédération Internationale de Football Association",
+    "option_d": "Football International Federation Association",
+    "correct_option": "C",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which country has Kylian Mbappé represented?",
+    "option_a": "Belgium",
+    "option_b": "France",
+    "option_c": "Cameroon",
+    "option_d": "Ivory Coast",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club is called 'The Magpies'?",
+    "option_a": "Newcastle United",
+    "option_b": "Swansea City",
+    "option_c": "Notts County",
+    "option_d": "Udinese",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Who scored the famous 'scorpion kick' goal for Colombia?",
+    "option_a": "Radamel Falcao",
+    "option_b": "James Rodríguez",
+    "option_c": "René Higuita",
+    "option_d": "Carlos Valderrama",
+    "correct_option": "C",
+    "category": "history"
+  },
+  {
+    "question_text": "What is the regulation size of a football goal (width x height)?",
+    "option_a": "7.32m x 2.44m",
+    "option_b": "7m x 2.5m",
+    "option_c": "7.5m x 2.3m",
+    "option_d": "7.2m x 2.5m",
+    "correct_option": "A",
+    "category": "rules"
+  },
+  {
+    "question_text": "Who is known as 'The King of Rome'?",
+    "option_a": "Francesco Totti",
+    "option_b": "Daniele De Rossi",
+    "option_c": "Gabriel Batistuta",
+    "option_d": "Cafu",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "Which German club has the nickname 'Die Roten'?",
+    "option_a": "Bayer Leverkusen",
+    "option_b": "Bayern Munich",
+    "option_c": "RB Leipzig",
+    "option_d": "Hamburger SV",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which nation won Copa América 2021?",
+    "option_a": "Argentina",
+    "option_b": "Brazil",
+    "option_c": "Uruguay",
+    "option_d": "Chile",
+    "correct_option": "A",
+    "category": "history"
+  },
+  {
+    "question_text": "What does a linesman now officially call?",
+    "option_a": "Side judge",
+    "option_b": "Assistant referee",
+    "option_c": "Touch judge",
+    "option_d": "Field referee",
+    "correct_option": "B",
+    "category": "rules"
+  },
+  {
+    "question_text": "Who is the top scorer in UEFA Champions League history?",
+    "option_a": "Lionel Messi",
+    "option_b": "Cristiano Ronaldo",
+    "option_c": "Robert Lewandowski",
+    "option_d": "Karim Benzema",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "Which club is known as 'Los Colchoneros'?",
+    "option_a": "Barcelona",
+    "option_b": "Atletico Madrid",
+    "option_c": "Sevilla",
+    "option_d": "Real Betis",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which player was called 'The Divine Ponytail'?",
+    "option_a": "Roberto Baggio",
+    "option_b": "Paolo Maldini",
+    "option_c": "Francesco Totti",
+    "option_d": "Andrea Pirlo",
+    "correct_option": "A",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club’s stadium is ‘Anfield’?",
+    "option_a": "Everton",
+    "option_b": "Liverpool",
+    "option_c": "Leeds United",
+    "option_d": "Manchester United",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which country hosted the first European Championship in 1960?",
+    "option_a": "France",
+    "option_b": "Spain",
+    "option_c": "Germany",
+    "option_d": "Italy",
+    "correct_option": "A",
+    "category": "history"
+  },
+  {
+    "question_text": "How long can a goalkeeper hold the ball before releasing it?",
+    "option_a": "4 seconds",
+    "option_b": "5 seconds",
+    "option_c": "6 seconds",
+    "option_d": "7 seconds",
+    "correct_option": "C",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which country’s team is called 'Azzurri'?",
+    "option_a": "Italy",
+    "option_b": "France",
+    "option_c": "Portugal",
+    "option_d": "Greece",
+    "correct_option": "A",
+    "category": "national_teams"
+  },
+  {
+    "question_text": "Who scored the famous ‘Goal of the Century’ in 1986?",
+    "option_a": "Diego Maradona",
+    "option_b": "Pelé",
+    "option_c": "George Best",
+    "option_d": "Zico",
+    "correct_option": "A",
+    "category": "history"
+  },
+  {
+    "question_text": "Which Premier League team has the nickname 'The Toffees'?",
+    "option_a": "Everton",
+    "option_b": "Leeds United",
+    "option_c": "Burnley",
+    "option_d": "Brighton",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which manager is nicknamed 'The Special One'?",
+    "option_a": "Pep Guardiola",
+    "option_b": "José Mourinho",
+    "option_c": "Jürgen Klopp",
+    "option_d": "Carlo Ancelotti",
+    "correct_option": "B",
+    "category": "coaches"
+  },
+  {
+    "question_text": "Which country has the nickname 'Seleção'?",
+    "option_a": "Brazil",
+    "option_b": "Portugal",
+    "option_c": "Argentina",
+    "option_d": "Colombia",
+    "correct_option": "A",
+    "category": "national_teams"
+  },
+  {
+    "question_text": "Which club did David Beckham join after Manchester United?",
+    "option_a": "AC Milan",
+    "option_b": "Real Madrid",
+    "option_c": "LA Galaxy",
+    "option_d": "PSG",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Which club is called 'The Foxes'?",
+    "option_a": "Leicester City",
+    "option_b": "Wolverhampton",
+    "option_c": "Crystal Palace",
+    "option_d": "Southampton",
+    "correct_option": "A",
+    "category": "clubs"
+  },
+  {
+    "question_text": "What is the standard weight of a FIFA-approved football?",
+    "option_a": "400–450g",
+    "option_b": "350–400g",
+    "option_c": "450–500g",
+    "option_d": "500–550g",
+    "correct_option": "A",
+    "category": "rules"
+  },
+  {
+    "question_text": "Which country has won the most European Championships?",
+    "option_a": "Spain",
+    "option_b": "Germany",
+    "option_c": "Italy",
+    "option_d": "France",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "Which club is known as 'The Bhoys'?",
+    "option_a": "Rangers",
+    "option_b": "Celtic",
+    "option_c": "Aberdeen",
+    "option_d": "Hibernian",
+    "correct_option": "B",
+    "category": "clubs"
+  },
+  {
+    "question_text": "Which player is called 'Il Capitano'?",
+    "option_a": "Alessandro Del Piero",
+    "option_b": "Francesco Totti",
+    "option_c": "Giorgio Chiellini",
+    "option_d": "Paolo Maldini",
+    "correct_option": "B",
+    "category": "players"
+  },
+  {
+    "question_text": "Who scored the winning goal in the Euro 2016 final?",
+    "option_a": "Cristiano Ronaldo",
+    "option_b": "Eder",
+    "option_c": "Pepe",
+    "option_d": "Nani",
+    "correct_option": "B",
+    "category": "history"
+  },
+  {
+    "question_text": "What is the official distance of the penalty spot from the goal line?",
+    "option_a": "10 yards (9.15m)",
+    "option_b": "11 yards (10.97m)",
+    "option_c": "12 yards (11.5m)",
+    "option_d": "13 yards (12m)",
+    "correct_option": "B",
+    "category": "rules"
+  }
+]
