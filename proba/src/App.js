@@ -1,21 +1,22 @@
+import React from 'react';
+import { Button } from 'react-native-web';
+import './App.css';
 import { useEffect, useState } from 'react';
+import { Route, useNavigate } from 'react-router-dom';
+import Trivia from './pages/Trivia';
+  
 
 function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:8080/questions')
-      .then(res => res.json())
-      .then(data => setUsers(data));
-  }, []);
-
+ 
+  const navigate = useNavigate(); 
   return (
-    <div>
-      <h1>Questions:</h1>
-      <ul>
-        {users.map(u => <li key={u.id}>{u.question_text}</li>)}
-      </ul>
-    </div>
+    <button
+      onClick={() => navigate('/trivia')}
+      style={{ backgroundColor: '#841584', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px' }}
+      aria-label="Learn more about this purple button"
+    >     
+      Welcome to the Trivia Quiz App!
+    </button>
   );
 }
 
