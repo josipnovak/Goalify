@@ -29,7 +29,7 @@ app.get('/players/', (req, res) => {
         });
 });    
 
-app.get('/players/:id', (req, res) => {
+app.get('/player/:id', (req, res) => {
     const playerId = req.params.id;
     pool.query('SELECT * FROM players WHERE id = $1', [playerId])
         .then(result => {
@@ -63,7 +63,7 @@ app.get('/questions/', (req, res) => {
         });
 });
 
-app.get('/questions/:id', (req, res) => {
+app.get('/question/:id', (req, res) => {
     const questionId = req.params.id;
     pool.query('SELECT * FROM questions WHERE id = $1', [questionId])
         .then(result => {
@@ -79,7 +79,7 @@ app.get('/questions/:id', (req, res) => {
         });
 });
 
-app.get('/check_questions/:id/:option', (req, res) => {
+app.get('/check_question/:id/:option', (req, res) => {
     const questionId = req.params.id;
     const selectedOption = req.params.option;
     pool.query('SELECT correct_option FROM questions WHERE id = $1', [questionId])
@@ -96,6 +96,21 @@ app.get('/check_questions/:id/:option', (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 });
+
+app.get('/questions/random', (req, res) => {
+    pool.query('SELECT * FROM questions ORDER BY RANDOM() LIMIT 1')
+        .then(result => {
+            if (result.rows.length > 0) {
+                res.json(result.rows[0]);
+            } else {
+                res.status(404).send('No questions found');
+            }
+        })
+        .catch(err => {
+            console.error('Error fetching random question:', err);
+            res.status(500).send('Internal Server Error');
+        });
+}); 
 
 app.listen(PORT, () => {
     console.log(`Server radi na http://localhost:${PORT}`);
