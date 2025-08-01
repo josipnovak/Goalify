@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Trivia from './pages/Trivia';
+import TicTacToe from './pages/TicTacToe';
+import HigherLower from './pages/HigherLower';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,8 +16,8 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/trivia" element={<Trivia />} />
-        <Route path="/teams" element={<App />} />
-        <Route path="/players" element={<App />} />
+        <Route path="/tictactoe" element={<TicTacToe />} />
+        <Route path="/higherlower" element={<HigherLower />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
