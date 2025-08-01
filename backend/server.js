@@ -4,6 +4,10 @@ const fetchPlayers = require('./api/fetchPlayers');
 const fetchTeams = require('./api/fetchTeams');
 const fetchRandomPlayer = require('./api/fetchRandomPlayer');
 const fetchQuestions = require('./api/fetchQuestions');
+const fetchPlayerById = require('./api/fetchPlayerById');
+const fetchQuestionById = require('./api/fetchQuestionById');
+const checkQuestion = require('./api/checkQuestion');
+const fetchRandomQuestion = require('./api/fetchRandomQuestion');
 const cors = require('cors');
 const app = express();
 app.use(cors());
@@ -30,20 +34,15 @@ app.get('/players/', (req, res) => {
 });    
 
 app.get('/player/:id', (req, res) => {
-    const playerId = req.params.id;
-    pool.query('SELECT * FROM players WHERE id = $1', [playerId])
-        .then(result => {
-            if (result.rows.length > 0) {
-                res.json(result.rows[0]);
-            } else {
-                res.status(404).send('Player not found');
-            }
-        })
+    fetchPlayerById(req.params.id)
+        .then(player => res.json(player))
         .catch(err => {
             console.error('Error fetching player:', err);
             res.status(500).send('Internal Server Error');
         });
 });
+
+
 
 app.get('/players/random/', (req, res) => {
     fetchRandomPlayer()
@@ -64,53 +63,31 @@ app.get('/questions/', (req, res) => {
 });
 
 app.get('/question/:id', (req, res) => {
-    const questionId = req.params.id;
-    pool.query('SELECT * FROM questions WHERE id = $1', [questionId])
-        .then(result => {
-            if (result.rows.length > 0) {
-                res.json(result.rows[0]);
-            } else {
-                res.status(404).send('Question not found');
-            }
-        })
+    fetchQuestionById(req.params.id)
+        .then(question => res.json(question))
         .catch(err => {
             console.error('Error fetching question:', err);
             res.status(500).send('Internal Server Error');
         });
 });
 
-app.get('/check_question/:id/:option', (req, res) => {
-    const questionId = req.params.id;
-    const selectedOption = req.params.option;
-    pool.query('SELECT correct_option FROM questions WHERE id = $1', [questionId])
-        .then(result => {
-            if (result.rows.length > 0) {
-                const correctOption = result.rows[0].correct_option;
-                res.json({ isCorrect: selectedOption === correctOption });
-            } else {
-                res.status(404).send('Question not found');
-            }
-        })
-        .catch(err => {
-            console.error('Error checking question:', err);
-            res.status(500).send('Internal Server Error');
-        });
-});
-
 app.get('/questions/random', (req, res) => {
-    pool.query('SELECT * FROM questions ORDER BY RANDOM() LIMIT 1')
-        .then(result => {
-            if (result.rows.length > 0) {
-                res.json(result.rows[0]);
-            } else {
-                res.status(404).send('No questions found');
-            }
-        })
+    fetchRandomQuestion()
+        .then(question => res.json(question))
         .catch(err => {
             console.error('Error fetching random question:', err);
             res.status(500).send('Internal Server Error');
         });
 }); 
+
+app.get('/check_question/:id/:option', (req, res) => {
+    checkQuestion(req.params.id, req.params.option)
+        .then(result => res.json(result))
+        .catch(err => {
+            console.error('Error checking question:', err);
+            res.status(500).send('Internal Server Error');
+        });
+});
 
 app.listen(PORT, () => {
     console.log(`Server radi na http://localhost:${PORT}`);
