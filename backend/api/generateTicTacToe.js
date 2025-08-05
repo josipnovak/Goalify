@@ -1,7 +1,12 @@
 const pool = require('../database/db.js'); 
 
-async function generateTicTacToe(res){
-    const query1 = 'SELECT * FROM teams ORDER BY RANDOM() LIMIT 3';
+async function generateTicTacToe(res, difficulty) {
+    const difficulties = {
+        easy: 1,
+        medium: 2,
+        hard: 3
+    };
+    const query1 = 'SELECT * FROM teams WHERE popularity <= $1 ORDER BY RANDOM() LIMIT 3';
     const query2 = `
         SELECT nationality 
         FROM (
@@ -29,7 +34,7 @@ async function generateTicTacToe(res){
     while (!validGrid && attempts < maxAttempts) {
         attempts++;
         try {
-            const [result1, result2] = await Promise.all([pool.query(query1), pool.query(query2)]);
+            const [result1, result2] = await Promise.all([pool.query(query1, [difficulties[difficulty]]), pool.query(query2)]);
             if (result1.rows.length !== 3) {
                 console.log(`Attempt ${attempts}: Insufficient teams`);
                 continue;

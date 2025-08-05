@@ -90,8 +90,8 @@ app.get('/check_question/:id/:option', (req, res) => {
         });
 });
 
-app.get('/generate/tictactoe', async (req, res) => {
-    generateTicTacToe(res)
+app.get('/generate/tictactoe/:difficulty', async (req, res) => {
+    generateTicTacToe(res, req.params.difficulty)
         .then(result => res.json(result))
         .catch(err => {
             console.error('Error generating TicTacToe game:', err);
