@@ -74,8 +74,7 @@ async function generateTicTacToe(res, difficulty) {
                 validGrid = true;
                 response = {
                     teams: teams,
-                    nationalities: nationalities,
-                    grid: gridResults
+                    nationalities: nationalities
                 };
             }
         } catch (err) {
