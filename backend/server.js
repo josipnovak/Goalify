@@ -9,6 +9,7 @@ const fetchQuestionById = require('./api/fetchQuestionById');
 const checkQuestion = require('./api/checkQuestion');
 const fetchRandomQuestion = require('./api/fetchRandomQuestion');
 const generateTicTacToe = require('./api/generateTicTacToe');
+const checkTicTacToePlayer = require('./api/checkTicTacToePlayer');
 const cors = require('cors');
 const app = express();
 app.use(cors());
@@ -42,8 +43,6 @@ app.get('/player/:id', (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 });
-
-
 
 app.get('/players/random/', (req, res) => {
     fetchRandomPlayer()
@@ -95,6 +94,21 @@ app.get('/generate/tictactoe/:difficulty', async (req, res) => {
         .then(result => res.json(result))
         .catch(err => {
             console.error('Error generating TicTacToe game:', err);
+            res.status(500).send('Internal Server Error');
+        });
+});
+
+app.get('/tictactoe/check/:nation/:teamId/:playerId', (req, res) => {
+    checkTicTacToePlayer(req.params.nation, req.params.teamId, req.params.playerId)
+        .then(result => {
+            if (result) {
+                res.json({ success: true });
+            } else {
+                res.json({ success: false });
+            }
+        })
+        .catch(err => {
+            console.error('Error checking TicTacToe player:', err);
             res.status(500).send('Internal Server Error');
         });
 });
