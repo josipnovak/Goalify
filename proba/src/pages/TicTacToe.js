@@ -66,6 +66,7 @@ function TicTacToe(){
                         setFirstPlayer(!firstPlayer);
                     } else {
                         setMessage(`Player ${player.name} is not valid for TicTacToe.`);
+                        setFirstPlayer(!firstPlayer);
                     }
                 })
                 .catch(error => console.error('Error checking player:', error));
