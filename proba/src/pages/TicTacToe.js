@@ -9,6 +9,7 @@ function TicTacToe(){
     const [searchTerm, setSearchTerm] = useState('');
     const [message, setMessage] = useState('');
     const [answeredCells, setAnsweredCells] = useState({});
+    const [firstPlayer, setFirstPlayer] = useState(true);
 
     useEffect(() => {
         if(!dialogVisible || !searchTerm) return;
@@ -60,8 +61,9 @@ function TicTacToe(){
                         setMessage(`Player ${player.name} is valid for TicTacToe.`);
                         setAnsweredCells(prev => ({
                             ...prev,
-                            [key]: player.name
+                            [key]: player.name + (firstPlayer ? ' (X)' : ' (O)')
                         }));
+                        setFirstPlayer(!firstPlayer);
                     } else {
                         setMessage(`Player ${player.name} is not valid for TicTacToe.`);
                     }
