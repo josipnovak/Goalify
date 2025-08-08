@@ -5,6 +5,10 @@ function TicTacToe(){
     const [grid, setGrid] = useState(null);
     const [dialogVisible, setDialogVisible] = useState(false);
     const [selectedCell, setSelectedCell] = useState([]);
+    const [points, setPoints] = useState({
+        X: 0,
+        O: 0
+    });
     const [players, setPlayers] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [message, setMessage] = useState('');
@@ -59,17 +63,83 @@ function TicTacToe(){
                     if (data.success) {
                         const key = selectedCell[0] + selectedCell[1];
                         setMessage(`Player ${player.name} is valid for TicTacToe.`);
-                        setAnsweredCells(prev => ({
+                        const playerSign = firstPlayer ? ' X' : ' O';
+                        const newAnsweredCells = {
+                            ...answeredCells,
+                            [key]: player.name + playerSign
+                        }
+                        setAnsweredCells(newAnsweredCells)
+                        setPoints(prev => ({
                             ...prev,
-                            [key]: player.name + (firstPlayer ? ' (X)' : ' (O)')
+                            [playerSign]: (prev[playerSign] || 0) + 10
                         }));
                         setFirstPlayer(!firstPlayer);
+                        checkWinner(newAnsweredCells);
                     } else {
                         setMessage(`Player ${player.name} is not valid for TicTacToe.`);
                         setFirstPlayer(!firstPlayer);
+                        checkWinner(answeredCells);
                     }
                 })
                 .catch(error => console.error('Error checking player:', error));
+        }
+
+        function checkWinner(newAnsweredCells) {
+            if (!grid || !grid.teams || !grid.nationalities) {
+                console.error('Invalid grid:', grid);
+                return;
+            }
+
+            const size = grid.teams.length;
+            const board = grid.nationalities.map(nation =>
+                grid.teams.map(team => {
+                    const val = newAnsweredCells[nation + team.id];
+                    if (val && (val.endsWith(' X') || val.endsWith(' O'))) {
+                        return val.slice(-1); 
+                    }
+                    return ' '; 
+                })
+            );
+
+            console.log('Board state:', board);
+
+            for (let i = 0; i < size; i++) {
+                const row = board[i];
+                if (row[0] === 'X' || row[0] === 'O') {
+                    if (row.every(sign => sign === row[0])) {
+                        setMessage(`Player ${row[0]} wins!`);
+                        return;
+                    }
+                }
+            }
+            for (let j = 0; j < size; j++) {
+                const col = board.map(row => row[j]);
+                if (col[0] === 'X' || col[0] === 'O') {
+                    if (col.every(sign => sign === col[0])) {
+                        setMessage(`Player ${col[0]} wins!`);
+                        return;
+                    }
+                }
+            }
+            const diag1 = board.map((row, i) => row[i]);
+            if (diag1[0] === 'X' || diag1[0] === 'O') {
+                if (diag1.every(sign => sign === diag1[0])) {
+                    setMessage(`Player ${diag1[0]} wins!`);
+                    return;
+                }
+            }
+            const diag2 = board.map((row, i) => row[size - 1 - i]);
+            if (diag2[0] === 'X' || diag2[0] === 'O') {
+                if (diag2.every(sign => sign === diag2[0])) {
+                    setMessage(`Player ${diag2[0]} wins!`);
+                    return;
+                }
+            }
+            const allFilled = board.flat().every(sign => sign === 'X' || sign === 'O');
+            if (allFilled) {
+                setMessage("It's a draw!");
+                return;
+            }
         }
 
        return (
@@ -86,6 +156,8 @@ function TicTacToe(){
                    <button value="hard">Hard</button>
                </div>
                <div>{difficulty}</div>
+               <div>X: {points['X']} O: {points['O']}</div>
+               <div>{firstPlayer ? <span>Player 1's turn (X)</span> : <span>Player 2's turn (O)</span>}</div>
                {grid && (
                 <table border="1" cellPadding="8" style={{ marginTop: 20, borderCollapse: 'collapse' }}>
                     <tbody>
