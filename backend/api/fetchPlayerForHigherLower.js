@@ -2,7 +2,7 @@ const pool = require('../database/db.js')
 
 function fetchPlayerForHigherLower(){
     const query = `
-        SELECT players.*
+        SELECT players.*, teams.name AS club
         FROM players
         JOIN teams ON players.team_id = teams.id
         WHERE teams.popularity = 1

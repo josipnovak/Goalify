@@ -123,6 +123,33 @@ app.get('/higherlower/player/', (req, res) => {
         });
 });
 
+app.get('/higherlower/check/:leftPlayerId/:rightPlayerId/:higher', async (req, res) => {
+    const query = `
+        SELECT * FROM players WHERE id = $1 OR id = $2
+    `;
+    const result = await pool.query(query, [req.params.leftPlayerId, req.params.rightPlayerId]);
+
+    if(result.rows.length !== 2) {
+        return res.status(404).send('Players not found');
+    }
+
+    const left = result.rows.find(player => player.id === parseInt(req.params.leftPlayerId));
+    const right = result.rows.find(player => player.id === parseInt(req.params.rightPlayerId));
+
+    const leftDateOfBirth = new Date(left.date_of_birth);
+    const rightDateOfBirth = new Date(right.date_of_birth);
+
+    let correct;
+
+    if(req.params.higher === 'true') {
+        correct = leftDateOfBirth > rightDateOfBirth;
+    } else {
+        correct = leftDateOfBirth < rightDateOfBirth;
+    }
+    return res.json({ success: correct });
+
+});
+
 app.listen(PORT, () => {
     console.log(`Server radi na http://localhost:${PORT}`);
 });
