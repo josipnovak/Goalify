@@ -10,6 +10,7 @@ const checkQuestion = require('./api/checkQuestion');
 const fetchRandomQuestion = require('./api/fetchRandomQuestion');
 const generateTicTacToe = require('./api/generateTicTacToe');
 const checkTicTacToePlayer = require('./api/checkTicTacToePlayer');
+const fetchPlayerForHigherLower = require('./api/fetchPlayerForHigherLower');
 const cors = require('cors');
 const app = express();
 app.use(cors());
@@ -109,6 +110,15 @@ app.get('/tictactoe/check/:nation/:teamId/:playerId', (req, res) => {
         })
         .catch(err => {
             console.error('Error checking TicTacToe player:', err);
+            res.status(500).send('Internal Server Error');
+        });
+});
+
+app.get('/higherlower/player/', (req, res) => {
+    fetchPlayerForHigherLower()
+        .then(player => res.json(player))
+        .catch(err => {
+            console.error('Error fetching player for higher-lower game:', err);
             res.status(500).send('Internal Server Error');
         });
 });
