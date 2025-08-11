@@ -11,6 +11,7 @@ const fetchRandomQuestion = require('./api/fetchRandomQuestion');
 const generateTicTacToe = require('./api/generateTicTacToe');
 const checkTicTacToePlayer = require('./api/checkTicTacToePlayer');
 const fetchPlayerForHigherLower = require('./api/fetchPlayerForHigherLower');
+const checkHigherLowerPlayer = require('./api/checkHigherLowerPlayer');
 const cors = require('cors');
 const app = express();
 app.use(cors());
@@ -124,30 +125,14 @@ app.get('/higherlower/player/', (req, res) => {
 });
 
 app.get('/higherlower/check/:leftPlayerId/:rightPlayerId/:higher', async (req, res) => {
-    const query = `
-        SELECT * FROM players WHERE id = $1 OR id = $2
-    `;
-    const result = await pool.query(query, [req.params.leftPlayerId, req.params.rightPlayerId]);
-
-    if(result.rows.length !== 2) {
-        return res.status(404).send('Players not found');
-    }
-
-    const left = result.rows.find(player => player.id === parseInt(req.params.leftPlayerId));
-    const right = result.rows.find(player => player.id === parseInt(req.params.rightPlayerId));
-
-    const leftDateOfBirth = new Date(left.date_of_birth);
-    const rightDateOfBirth = new Date(right.date_of_birth);
-
-    let correct;
-
-    if(req.params.higher === 'true') {
-        correct = leftDateOfBirth > rightDateOfBirth;
-    } else {
-        correct = leftDateOfBirth < rightDateOfBirth;
-    }
-    return res.json({ success: correct });
-
+    await checkHigherLowerPlayer(req, res)
+        .then(result => res.json(
+            { success: result }
+        ))
+        .catch(err => {
+            console.error('Error checking higher-lower player:', err);
+            res.status(500).send('Internal Server Error');
+        });
 });
 
 app.listen(PORT, () => {
