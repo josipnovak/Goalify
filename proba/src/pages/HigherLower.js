@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './HigherLower.css';
 
 function HigherLower(){
     const [leftPlayer, setLeftPlayer] = useState({});
@@ -42,7 +43,6 @@ function HigherLower(){
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Correct!');
                     setLeftPlayer(rightPlayer);
                     setRightPlayer({});
                     fetchPlayerForGame();
@@ -55,64 +55,59 @@ function HigherLower(){
             });
     }
 
-    function formatDate(dateString){
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return new Date(dateString).toLocaleDateString(undefined, options); 
+    function calculateAge(dateString){
+        const birthDate = new Date(dateString);
+        const ageDiff = Date.now() - birthDate.getTime();
+        const ageDate = new Date(ageDiff);
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 
     return (
+    <div className="higherlower-container">
+      <h1 className="higherlower-title">Higher or Lower - Football Edition</h1>
+
+      {!gameStarted && !gameEnded && (
+        <button className="higherlower-btn" onClick={fetchPlayerForGame}>
+          Start Game
+        </button>
+      )}
+
+      {gameStarted && !gameEnded && (
         <div>
-            <h1>Welcome to the Higher Lower Game!</h1>
-            <p>Get ready to test your knowledge!</p>
-            {gameEnded ? (
-                <div>
-                    <h2>Game Over!</h2>
-                    <div>
-                        <h2>{leftPlayer.name}</h2>
-                        <p>Club: {leftPlayer.club}</p>
-                        <p>Nationality: {leftPlayer.nationality}</p>
-                        <p>Date of Birth: {formatDate(leftPlayer.date_of_birth)}</p>
-                    </div>
-                    <div>
-                        <h2>{rightPlayer.name}</h2>
-                        <p>Club: {rightPlayer.club}</p>
-                        <p>Nationality: {rightPlayer.nationality}</p>
-                        <p>Date of Birth: {formatDate(rightPlayer.date_of_birth)}</p>
-                    </div>
-                </div>
-            ) : !gameStarted ? (
-                <div>
-                    <div>
-                        <h2>{leftPlayer.name}</h2>
-                        <p>Club: {leftPlayer.club}</p>
-                        <p>Nationality: {leftPlayer.nationality}</p>
-                        <p>Date of Birth: {formatDate(leftPlayer.date_of_birth)}</p>
-                    </div>
-                    <div>
-                        <button onClick={fetchPlayerForGame}>Start Game</button>
-                    </div>
-                </div>
-            ) : (
-                <div>
-                    <div>
-                        <h2>{leftPlayer.name}</h2>
-                        <p>Club: {leftPlayer.club}</p>
-                        <p>Nationality: {leftPlayer.nationality}</p>
-                        <p>Date of Birth: {formatDate(leftPlayer.date_of_birth)}</p>
-                    </div>
-                    <div>
-                        <button onClick={() => handleHigherLowerClick(true)}>Higher</button>
-                        <button onClick={() => handleHigherLowerClick(false)}>Lower</button>
-                    </div>
-                    <div>
-                        <h2>{rightPlayer.name}</h2>
-                        <p>Club: {rightPlayer.club}</p>
-                        <p>Nationality: {rightPlayer.nationality}</p>
-                    </div>
-                </div>
-            )}
+          <div className="player-card">
+            <h2>{leftPlayer.name}</h2>
+            <p>Club: {leftPlayer.club}</p>
+            <p>Nationality: {leftPlayer.nationality}</p>
+            <p>Age: {calculateAge(leftPlayer.date_of_birth)}</p>
+            <p>Market Value: {leftPlayer.market_value}</p>
+          </div>
+
+          <div>
+            <button className="higherlower-btn" onClick={() => handleHigherLowerClick(true)}>Higher</button>
+            <button className="higherlower-btn" onClick={() => handleHigherLowerClick(false)}>Lower</button>
+          </div>
+
+          {rightPlayer.name && (
+            <div className="player-card">
+              <h2>{rightPlayer.name}</h2>
+              <p>Club: {rightPlayer.club}</p>
+              <p>Nationality: {rightPlayer.nationality}</p>
+              <p>Age: {calculateAge(rightPlayer.date_of_birth)}</p>
+            </div>
+          )}
         </div>
-    );
+      )}
+
+      {gameEnded && (
+        <div className="game-over">
+          <p>Game Over! Try Again?</p>
+          <button className="higherlower-btn" onClick={() => window.location.reload()}>
+            Restart
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default HigherLower;

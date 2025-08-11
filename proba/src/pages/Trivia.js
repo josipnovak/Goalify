@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Trivia.css'
 function Trivia(){
     const [question, setQuestion] = useState([]);
     const [result, setResult] = useState(false);
@@ -42,23 +43,22 @@ function Trivia(){
     };
 
     return (
-        <div>
-            <h1>Welcome to the Trivia Quiz!</h1>
-            <p>Get ready to test your knowledge!</p>
-            <p>Score: {score}</p>
+        <div className="trivia-container">
+            <h1 className="trivia-title">Football Trivia</h1>
+            <div className="score-board">Score: {score}</div>
             {question.question_text && (
                     <div>{question.question_text}<br></br>
-                        <button type="button" onClick={() => handleSubmit('A')}>{question.option_a}</button>
-                        <button type="button" onClick={() => handleSubmit('B')}>{question.option_b}</button>
-                        <button type="button" onClick={() => handleSubmit('C')}>{question.option_c}</button>
-                        <button type="button" onClick={() => handleSubmit('D')}>{question.option_d}</button>
+                        <button type="button" className="option-btn" onClick={() => handleSubmit('A')}>{question.option_a}</button>
+                        <button type="button" className="option-btn" onClick={() => handleSubmit('B')}>{question.option_b}</button>
+                        <button type="button" className="option-btn" onClick={() => handleSubmit('C')}>{question.option_c}</button>
+                        <button type="button" className="option-btn" onClick={() => handleSubmit('D')}>{question.option_d}</button>
                     </div>
             )}
-            {result && (
-                <div>
-                    {result.correct ? 'Correct!' : 'Wrong!'}
-                </div>
-            )}
+            {result && !result.error && (
+            <div className="result-message">
+            {result.correct ? '✅ Correct!' : '❌ Wrong!'}
+            </div>
+        )}
         </div>
     );
 }
