@@ -135,7 +135,27 @@ app.get('/higherlower/check/:leftPlayerId/:rightPlayerId/:higher', async (req, r
         });
 });
 
+app.get('/', (req, res) => {
+    res.send(`
+        <h1>Goalify API Endpoints</h1>
+        <ul>
+            <li>GET /teams/</li>
+            <li>GET /players/?search=</li>
+            <li>GET /player/:id</li>
+            <li>GET /players/random/</li>
+            <li>GET /questions/</li>
+            <li>GET /question/:id</li>
+            <li>GET /questions/random</li>
+            <li>GET /check_question/:id/:option</li>
+            <li>GET /generate/tictactoe/:difficulty</li>
+            <li>GET /tictactoe/check/:nation/:teamId/:playerId</li>
+            <li>GET /higherlower/player/</li>
+            <li>GET /higherlower/check/:leftPlayerId/:rightPlayerId/:higher </li>
+        </ul>
+    `);
+});
+
 app.listen(PORT, () => {
-    console.log(`Server radi na http://localhost:${PORT}`);
+    console.log(`Server running at: http://localhost:${PORT}`);
 });
 
