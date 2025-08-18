@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 class HigherLowerScreen extends StatefulWidget {
   final String title;
-  final String startText;
 
-  const HigherLowerScreen({super.key, required this.title, required this.startText});
+  const HigherLowerScreen({super.key, required this.title});
 
   @override
   State<HigherLowerScreen> createState() => _HigherLowerScreenState();
@@ -27,12 +26,6 @@ class _HigherLowerScreenState extends State<HigherLowerScreen> {
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                print("Starting Higher Lower...");
-              },
-              child: Text(widget.startText),
-            ),
           ],
         ),
       ),
