@@ -1,7 +1,7 @@
 class Question{
-  final String questionText;
-  final List<String> options;
-  final String answer;
+  String questionText;
+  List<String> options;
+  String answer;
 
   Question({
     required this.questionText,

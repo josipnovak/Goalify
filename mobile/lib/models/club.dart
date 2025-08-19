@@ -1,7 +1,7 @@
 class Club{
-  final int id;
-  final String name;
-  final String logoUrl;
+  int id;
+  String name;
+  String logoUrl;
 
   Club({
     required this.id,
