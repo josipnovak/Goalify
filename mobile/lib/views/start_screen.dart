@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/trivia.dart';
-import 'package:mobile/screens/tictactoe.dart';
-import 'package:mobile/screens/higher_lower.dart';
-import 'package:mobile/models/question.dart';
+import 'package:mobile/views/trivia.dart';
+import 'package:mobile/views/tictactoe.dart';
+import 'package:mobile/views/higher_lower.dart';
+import 'package:mobile/viewmodels/triviaviewmodel.dart';
 import 'package:mobile/models/tictactoe.dart';
 import 'package:mobile/models/club.dart';
 import 'package:mobile/models/player.dart';
@@ -34,7 +34,7 @@ class _StartScreenState extends State<StartScreen> {
               onPressed: () {
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => TriviaScreen(title: 'Trivia Game', questionExample: Question(questionText: 'Example Question?', options: const ['Option 1', 'Option 2', 'Option 3'], answer: 'Option 1')))
+                  MaterialPageRoute(builder: (context) => TriviaScreen(viewModel: TriviaViewModel()))
                 );
               },
               child: const Text('Trivia'),
