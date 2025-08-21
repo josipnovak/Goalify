@@ -12,10 +12,18 @@ class TriviaScreen extends StatefulWidget {
 }
 
 class _TriviaScreenState extends State<TriviaScreen> {
+  Question? currentQuestion;
+  bool? isCorrect; 
+  int points = 0;
+
   @override
   void initState() {
     super.initState();
-    widget.viewModel.fetchQuestion(); 
+    widget.viewModel.fetchQuestion().then((question) {
+      setState(() {
+        currentQuestion = question;
+      });
+    });
   }
 
   @override
@@ -25,45 +33,82 @@ class _TriviaScreenState extends State<TriviaScreen> {
         title: Text(widget.viewModel.title),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: FutureBuilder<Question>(
-        future: widget.viewModel.fetchQuestion(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator()); 
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-
-          if (snapshot.hasData) {
-            final question = snapshot.data!;
-            return Center(
+      body: currentQuestion == null
+          ? Center(child: CircularProgressIndicator())
+          : Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Text('Points: $points'),
                   Text(
-                    question.questionText,
+                    currentQuestion!.questionText,
                     style: TextStyle(fontSize: 24),
                   ),
                   SizedBox(height: 20),
                   Column(
-                    children: question.options.entries.map((entry) {
+                    children: currentQuestion!.options.entries.map((entry) {
                       return ElevatedButton(
-                        onPressed: () {
-                          print("Answer selected: ${entry.key}");
-                        },
+                        onPressed: isCorrect == null
+                            ? () {
+                              widget.viewModel.isAnswerCorrect(currentQuestion!.id, entry.key).then((result) {
+                                setState(() {
+                                  isCorrect = result;
+                                  if (result) {
+                                    points += 5; 
+                                  }
+                                });
+                              }); 
+                            }
+                            : null,
                         child: Text(entry.value),
                       );
                     }).toList(),
                   ),
+                  if (isCorrect != null)
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            isCorrect! ? 'Correct!' : 'Incorrect!',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: isCorrect! ? Colors.green : Colors.red,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          if (isCorrect!)
+                            ElevatedButton(
+                              onPressed: () {
+                                widget.viewModel.fetchQuestion().then((question) {
+                                  setState(() {
+                                    currentQuestion = question;
+                                    isCorrect = null;
+                                  });
+                                });
+                              },
+                              child: Text('Next'),
+                            )
+                          else
+                            Column(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      isCorrect = null;
+                                      points = 0;
+                                    });
+                                  },
+                                  child: Text('Try Again'),
+                                ),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
-            );
-          }
-
-          return Center(child: Text('No data available.'));
-        },
-      ),
+            ),
     );
   }
 }
