@@ -50,14 +50,13 @@ class _TriviaScreenState extends State<TriviaScreen> {
                       return ElevatedButton(
                         onPressed: isCorrect == null
                             ? () {
-                              widget.viewModel.isAnswerCorrect(currentQuestion!.id, entry.key).then((result) {
-                                setState(() {
-                                  isCorrect = result;
-                                  if (result) {
-                                    points += 5; 
-                                  }
-                                });
-                              }); 
+                              final result = widget.viewModel.isAnswerCorrect(currentQuestion!.id, entry.key);
+                              setState(() {
+                                isCorrect = result;
+                                if (result) {
+                                  points += 5;
+                                }
+                              });
                             }
                             : null,
                         child: Text(entry.value),
@@ -94,9 +93,11 @@ class _TriviaScreenState extends State<TriviaScreen> {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
-                                    setState(() {
-                                      isCorrect = null;
-                                      points = 0;
+                                    widget.viewModel.fetchQuestion().then((question) {
+                                      setState(() {
+                                        currentQuestion = question;
+                                        isCorrect = null;
+                                      });
                                     });
                                   },
                                   child: Text('Try Again'),

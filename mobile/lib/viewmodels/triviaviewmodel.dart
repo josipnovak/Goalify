@@ -88,15 +88,7 @@ class TriviaViewModel {
     }
   }
 
-  Future<bool> isAnswerCorrect(int questionId, String answerKey) async{
-    final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/check_question/$questionId/$answerKey')
-    );
-    if (response.statusCode == 200) {
-      var decoded = jsonDecode(response.body);
-      return decoded["correct"];
-    } else {
-      return false;
-    }
+  bool isAnswerCorrect(int questionId, String answerKey){
+    return question.id == questionId && question.answer == answerKey;
   }
 }
