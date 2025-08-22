@@ -3,8 +3,7 @@ import 'package:mobile/views/trivia.dart';
 import 'package:mobile/views/tictactoe.dart';
 import 'package:mobile/views/higher_lower.dart';
 import 'package:mobile/viewmodels/triviaviewmodel.dart';
-import 'package:mobile/models/tictactoe.dart';
-import 'package:mobile/models/club.dart';
+import 'package:mobile/viewmodels/tictactoeviewmodel.dart';
 import 'package:mobile/models/player.dart';
 
 
@@ -43,15 +42,7 @@ class _StartScreenState extends State<StartScreen> {
               onPressed: (){
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => TicTacToeScreen(title: 'Tic Tac Toe', game: TicTacToe(clubs: [
-                    Club(id: 59, name: 'Barcelona', logoUrl: 'https://crests.football-data.org/81.png'),
-                    Club(id: 72, name: 'Real Madrid', logoUrl: 'https://crests.football-data.org/86.png'),
-                    Club(id: 76, name: 'Atletico Madrid', logoUrl: 'https://crests.football-data.org/78.png'),
-                  ], nations: [
-                    'Spain',
-                    'England',
-                    'Italy',
-                  ])))
+                  MaterialPageRoute(builder: (context) => TicTacToeScreen(viewModel: TicTacToeViewModel()))
                 );
               },
               child: const Text('TicTacToe'),
