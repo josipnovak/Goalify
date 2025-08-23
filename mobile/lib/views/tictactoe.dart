@@ -16,6 +16,7 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
   TicTacToe? game;
   String currentPlayer = 'X';
   Map<String, String> selectedPlayers = {};
+  String? winnerMessage;
 
   @override
   void initState() {
@@ -36,11 +37,11 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
       context: context,
       builder: (context) {
         return StatefulBuilder(
-          builder: (context, setState) {
+          builder: (context, setStateDialog) {
             Future<void> fetchPlayers(String query) async {
-              setState(() => isLoading = true);
+              setStateDialog(() => isLoading = true);
               players = await widget.viewModel.fetchPlayers(query);
-              setState(() => isLoading = false);
+              setStateDialog(() => isLoading = false);
             }
 
             return AlertDialog(
@@ -66,23 +67,23 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
                         children: players.map((player) => ListTile(
                           title: Text(player.name),
                           onTap: () async {
-                              bool isCorrect = await widget.viewModel.checkPlayer(nation, clubId, player.id.toString());
-                              Navigator.of(context).pop();
-                              if (isCorrect) {
-                                setState(() {
+                            bool isCorrect = await widget.viewModel.checkPlayer(nation, clubId, player.id.toString());
+                            Navigator.of(context).pop(); 
+                            if (isCorrect) {
+                              setState(() {
                                 selectedPlayers['$nation-${clubId}'] = currentPlayer;
                                 print("Selected players after update: $selectedPlayers");  
                                 currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
+                                winnerMessage = widget.viewModel.checkWinner(selectedPlayers);
                               });
-                              } else {
-                                setState(() {
-                                  currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
-                                });
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Incorrect player selected')),
-                                );
-                              }
-                            ;
+                            } else {
+                              setState(() {
+                                currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Incorrect player selected')),
+                              );
+                            }
                           },
                         )).toList(),
                       ),
@@ -151,16 +152,26 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
                                 _showPlayerDialog(nation, club.id.toString());
                               },
                               child: Text('Add', style: TextStyle(fontSize: 12)),
-                            ) :Text(
-                              selectedPlayers['$nation-${club.id}']!,
-                              style: TextStyle(fontSize: 10),
-                              textAlign: TextAlign.center,
+                            ) : Center(
+                              child: Text(
+                                selectedPlayers['$nation-${club.id}']!,
+                                style: TextStyle(fontSize: 16),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                        ),
+                        )
                     ],
                   ),
               ],
             ),
+            if (winnerMessage != null)
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  winnerMessage!,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+              ),
           ],
         ),
       ),

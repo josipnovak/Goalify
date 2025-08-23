@@ -69,4 +69,48 @@ class TicTacToeViewModel{
     }
     return false;
   }
+
+  String? checkWinner(Map<String, String> selectedPlayers) {
+    final size = game.clubs.length;
+    List<List<String>> board = List.generate(
+      size,
+      (i) => List.generate(
+        size,
+        (j) {
+          String key = '${game.nations[i]}-${game.clubs[j].id}';
+          String? val = selectedPlayers[key];
+          if (val == 'X' || val == 'O') {
+            return val!;
+          }
+          return ' ';
+        },
+      ),
+    );
+
+    for (int i = 0; i < size; i++) {
+      String first = board[i][0];
+      if (first != ' ' && board[i].every((sign) => sign == first)) {
+        return 'Player $first wins!';
+      }
+    }
+    for (int j = 0; j < size; j++) {
+      String first = board[0][j];
+      if (first != ' ' && List.generate(size, (i) => board[i][j]).every((sign) => sign == first)) {
+        return 'Player $first wins!';
+      }
+    }
+    String diag1 = board[0][0];
+    if (diag1 != ' ' && List.generate(size, (i) => board[i][i]).every((sign) => sign == diag1)) {
+      return 'Player $diag1 wins!';
+    }
+    String diag2 = board[0][size - 1];
+    if (diag2 != ' ' && List.generate(size, (i) => board[i][size - 1 - i]).every((sign) => sign == diag2)) {
+      return 'Player $diag2 wins!';
+    }
+    bool allFilled = board.expand((row) => row).every((sign) => sign == 'X' || sign == 'O');
+    if (allFilled) {
+      return "It's a draw!";
+    }
+    return null;
+  }
 }
