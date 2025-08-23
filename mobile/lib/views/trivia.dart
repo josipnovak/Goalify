@@ -59,7 +59,16 @@ class _TriviaScreenState extends State<TriviaScreen> {
                               });
                             }
                             : null,
-                        child: Text(entry.value),
+                        child: Text(
+                          entry.value,
+                          style: TextStyle(
+                            color: isCorrect == null
+                                ? null
+                                : currentQuestion!.answer == entry.key
+                                    ? Colors.green
+                                    : Colors.red,
+                          ),
+                        ),
                       );
                     }).toList(),
                   ),
@@ -97,6 +106,7 @@ class _TriviaScreenState extends State<TriviaScreen> {
                                       setState(() {
                                         currentQuestion = question;
                                         isCorrect = null;
+                                        points = 0;
                                       });
                                     });
                                   },
