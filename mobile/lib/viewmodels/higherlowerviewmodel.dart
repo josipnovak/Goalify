@@ -9,26 +9,58 @@ class HigherLowerViewModel {
 
   HigherLowerViewModel() {
     title = 'Higher Lower';
+    player1 = Player(id: 0, name: '', nationality: '', dateOfBirth: DateTime.now(), club: '', marketValue: 0);
+    player2 = Player(id: 0, name: '', nationality: '', dateOfBirth: DateTime.now(), club: '', marketValue: 0);
   }
 
-  Future<Player> fetchPlayer() async {
+  Future<bool> fetchPlayer() async {
     final response = await http.get(
-      Uri.parse('http://localhost:8080/higherlower/player/'),
+      Uri.parse('http://192.168.0.3:8080/higherlower/player/'),
     );
     if (response.statusCode == 200) {
       var decoded = jsonDecode(response.body);
-      player1 = decoded.map((data) => Player(
-        id: data['id'],
-        name: data['name'],
-        nationality: data['nationality'],
-        dateOfBirth: DateTime.parse(data['date_of_birth']),
-        club: data['club'],
-        marketValue: double.parse(data['market_value']),
-      )).toList();
-      return player1;
-    } else {
-      throw Exception('Failed to load player');
+      print(decoded);
+      player1 = Player(
+        id: decoded['id'],
+        name: decoded['name'],
+        dateOfBirth: DateTime.parse(decoded['date_of_birth']),
+        club: decoded['club'],
+        marketValue: double.parse(decoded['market_value']),
+        nationality: decoded['nationality']
+      );
+      return true;
+    } 
+    return false;
+  }
+
+  Future<bool> fetchSecondPlayer() async {
+    final response = await http.get(
+      Uri.parse('http://192.168.0.3:8080/higherlower/player/'),
+    );
+    if (response.statusCode == 200) {
+      var decoded = jsonDecode(response.body);
+      player2 = Player(
+        id: decoded['id'],
+        name: decoded['name'],
+        dateOfBirth: DateTime.parse(decoded['date_of_birth']),
+        club: decoded['club'],
+        marketValue: double.parse(decoded['market_value']),
+        nationality: decoded['nationality']
+      );
+      return true;
+    } 
+    return false;
+  }
+
+  Future<bool> checkAnswer(String higher) async {
+    final response = await http.get(
+      Uri.parse('http://192.168.0.3:8080/higherlower/check/${player1.id}/${player2.id}/$higher'),
+    );
+    if(response.statusCode == 200){
+      var decoded = jsonDecode(response.body);
+      return decoded['success'];
     }
+    return false;
   }
 
   int calculateAge(DateTime birthDate){

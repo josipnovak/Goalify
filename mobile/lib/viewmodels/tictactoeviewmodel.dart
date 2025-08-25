@@ -21,7 +21,7 @@ class TicTacToeViewModel{
     ]);
   }
 
-  Future<TicTacToe> fetchGame() async {
+  Future<bool> fetchGame() async {
     final response = await http.get(
       Uri.parse('http://192.168.0.3:8080/generate/tictactoe/easy')
     );
@@ -34,7 +34,7 @@ class TicTacToeViewModel{
       ];
       List<String> nations = List<String>.from(decoded['nationalities']);
       game = TicTacToe(clubs: clubs, nations: nations);
-      return game;
+      return true;
     }
     throw Exception('Failed to load game');
   }

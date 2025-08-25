@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/viewmodels/tictactoeviewmodel.dart';
-import 'package:mobile/models/tictactoe.dart';
 import 'package:mobile/models/player.dart';
 
 class TicTacToeScreen extends StatefulWidget{
@@ -13,7 +12,7 @@ class TicTacToeScreen extends StatefulWidget{
 }
 
 class _TicTacToeScreenState extends State<TicTacToeScreen> {
-  TicTacToe? game;
+  bool created = false;
   String currentPlayer = 'X';
   Map<String, String> selectedPlayers = {};
   String? winnerMessage;
@@ -21,9 +20,9 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
   @override
   void initState() {
     super.initState();
-    widget.viewModel.fetchGame().then((game) {
+    widget.viewModel.fetchGame().then((created) {
       setState(() {
-        this.game = game;
+        this.created = created;
       });
     });
   }
@@ -110,7 +109,7 @@ class _TicTacToeScreenState extends State<TicTacToeScreen> {
         title: Text(widget.viewModel.title),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: game == null
+      body: created == false
           ? Center(child: CircularProgressIndicator())
           : Center(
         child: Column(
