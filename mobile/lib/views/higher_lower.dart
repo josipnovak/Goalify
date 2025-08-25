@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/models/player.dart';
+import 'package:mobile/viewmodels/higherlowerviewmodel.dart';
 
 class HigherLowerScreen extends StatefulWidget {
-  final String title;
-  final Player player1;
-  final Player player2;
+  final HigherLowerViewModel viewModel;
 
-  int calculateAge(DateTime birthDate){
-    final today = DateTime.now();
-    int age = today.year - birthDate.year;
-    if (today.month < birthDate.month || (today.month == birthDate.month && today.day < birthDate.day)) {
-      age--;
-    }
-    return age;
-  }
-
-  const HigherLowerScreen({super.key, required this.title, required this.player1, required this.player2});
+  const HigherLowerScreen({super.key, required this.viewModel});
 
   @override
   State<HigherLowerScreen> createState() => _HigherLowerScreenState();
@@ -26,7 +15,7 @@ class _HigherLowerScreenState extends State<HigherLowerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.viewModel.title),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
@@ -35,11 +24,11 @@ class _HigherLowerScreenState extends State<HigherLowerScreen> {
           children: <Widget>[
             Column(
               children: [
-                Text(widget.player1.name),
-                Text(widget.player1.nationality),
-                Text('Age: ${widget.calculateAge(widget.player1.dateOfBirth)}'),
-                Text(widget.player1.marketValue.toString()),
-                Text(widget.player1.club),
+                Text(widget.viewModel.player1.name),
+                Text(widget.viewModel.player1.nationality),
+                Text('Age: ${widget.viewModel.calculateAge(widget.viewModel.player1.dateOfBirth)}'),
+                Text(widget.viewModel.player1.marketValue.toString()),
+                Text(widget.viewModel.player1.club),
               ],
             ),
             SizedBox(height: 50),
@@ -64,11 +53,11 @@ class _HigherLowerScreenState extends State<HigherLowerScreen> {
             SizedBox(height: 50),
             Column(
               children: [
-                Text(widget.player2.name),
-                Text(widget.player2.nationality),
-                Text('Age: ${widget.calculateAge(widget.player2.dateOfBirth)}'),
-                Text(widget.player2.marketValue.toString()),
-                Text(widget.player2.club),
+                Text(widget.viewModel.player2.name),
+                Text(widget.viewModel.player2.nationality),
+                Text('Age: ${widget.viewModel.calculateAge(widget.viewModel.player2.dateOfBirth)}'),
+                Text(widget.viewModel.player2.marketValue.toString()),
+                Text(widget.viewModel.player2.club),
               ],
             ),
           ],

@@ -4,7 +4,7 @@ import 'package:mobile/views/tictactoe.dart';
 import 'package:mobile/views/higher_lower.dart';
 import 'package:mobile/viewmodels/triviaviewmodel.dart';
 import 'package:mobile/viewmodels/tictactoeviewmodel.dart';
-import 'package:mobile/models/player.dart';
+import 'package:mobile/viewmodels/higherlowerviewmodel.dart';
 
 
 class StartScreen extends StatefulWidget {
@@ -51,9 +51,7 @@ class _StartScreenState extends State<StartScreen> {
               onPressed: () {
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => HigherLowerScreen(title: 'Higher Lower', 
-                  player1: Player(id: 1, name: 'Lionel Messi', dateOfBirth: DateTime(1987, 6, 24), nationality: 'Argentinian', marketValue: 100.0, club: 'Barcelona'), 
-                  player2: Player(id: 2, name: 'Cristiano Ronaldo', dateOfBirth: DateTime(1985, 2, 5), nationality: 'Portuguese', marketValue: 90.0, club: 'Real Madrid')))
+                  MaterialPageRoute(builder: (context) => HigherLowerScreen(viewModel: HigherLowerViewModel()))
                 );
               },
               child: const Text('HigherLower'),
