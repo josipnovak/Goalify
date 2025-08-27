@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:mobile/models/tictactoe.dart';
 import 'package:mobile/models/club.dart';
 import 'package:mobile/models/player.dart';
+import 'package:mobile/constants.dart';
 
 class TicTacToeViewModel{
   late String title;
@@ -23,7 +24,7 @@ class TicTacToeViewModel{
 
   Future<bool> fetchGame() async {
     final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/generate/tictactoe/easy')
+      Uri.parse('$baseUrl/generate/tictactoe/easy')
     );
     if(response.statusCode == 200){
       var decoded = jsonDecode(response.body);
@@ -41,7 +42,7 @@ class TicTacToeViewModel{
 
   Future<List<Player>> fetchPlayers(String query) async {
     final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/players/?search=$query'),
+      Uri.parse('$baseUrl/players/?search=$query'),
     );
     if (response.statusCode == 200) {
       var decoded = jsonDecode(response.body);
@@ -60,7 +61,7 @@ class TicTacToeViewModel{
 
   Future<bool> checkPlayer(String nationality, String clubId, String playerId) async {
     final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/tictactoe/check/$nationality/$clubId/$playerId'),
+      Uri.parse('$baseUrl/tictactoe/check/$nationality/$clubId/$playerId'),
     ); 
     if(response.statusCode == 200){
       var decoded = jsonDecode(response.body);

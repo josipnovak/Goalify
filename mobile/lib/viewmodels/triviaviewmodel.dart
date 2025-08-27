@@ -1,6 +1,7 @@
 import 'package:mobile/models/question.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:mobile/constants.dart';
 
 class TriviaViewModel {
   late String title;
@@ -23,8 +24,9 @@ class TriviaViewModel {
 
   Future<Question> fetchQuestion() async {
     final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/questions/random')
+      Uri.parse('$baseUrl/questions/random')
     );
+    print('$baseUrl/questions/random');
     if (response.statusCode == 200) {
       var decoded = jsonDecode(response.body);
       question = Question(
@@ -56,7 +58,7 @@ class TriviaViewModel {
   }
   void fetchNewQuestion() async {
     final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/questions/random')
+      Uri.parse('$baseUrl/questions/random')
     );
     if (response.statusCode == 200) {
       var decoded = jsonDecode(response.body);

@@ -1,6 +1,7 @@
 import 'package:mobile/models/player.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:mobile/constants.dart';
 
 class HigherLowerViewModel {
   late String title;
@@ -15,7 +16,7 @@ class HigherLowerViewModel {
 
   Future<bool> fetchPlayer() async {
     final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/higherlower/player/'),
+      Uri.parse('$baseUrl/higherlower/player/'),
     );
     if (response.statusCode == 200) {
       var decoded = jsonDecode(response.body);
@@ -35,7 +36,7 @@ class HigherLowerViewModel {
 
   Future<bool> fetchSecondPlayer() async {
     final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/higherlower/player/'),
+      Uri.parse('$baseUrl/higherlower/player/'),
     );
     if (response.statusCode == 200) {
       var decoded = jsonDecode(response.body);
@@ -54,7 +55,7 @@ class HigherLowerViewModel {
 
   Future<bool> checkAnswer(String higher) async {
     final response = await http.get(
-      Uri.parse('http://192.168.0.3:8080/higherlower/check/${player1.id}/${player2.id}/$higher'),
+      Uri.parse('$baseUrl/higherlower/check/${player1.id}/${player2.id}/$higher'),
     );
     if(response.statusCode == 200){
       var decoded = jsonDecode(response.body);
