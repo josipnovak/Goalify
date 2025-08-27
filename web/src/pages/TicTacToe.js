@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './TicTacToe.css';
+import { baseUrl } from '../App';
 
 function TicTacToe(){
     const [difficulty, setDifficulty] = useState('');
@@ -25,7 +26,7 @@ function TicTacToe(){
     }, [searchTerm, dialogVisible]);
 
     async function fetchPlayers(name) {
-        fetch('http://localhost:8080/players/?search=' + name)
+        fetch(`${baseUrl}/players/?search=` + name)
             .then(response => response.json())
             .then(data => {
                 setPlayers(data);
@@ -35,7 +36,7 @@ function TicTacToe(){
     }
 
     async function fetchGrid(difficulty) {
-        fetch('http://localhost:8080/generate/tictactoe/' + difficulty)
+        fetch(`${baseUrl}/generate/tictactoe/` + difficulty)
             .then(response => response.json())
                .then(data => {
                    setGrid(data);
@@ -58,7 +59,7 @@ function TicTacToe(){
         }
 
         function checkPlayer(player){
-            fetch('http://localhost:8080/tictactoe/check/' + selectedCell[0] + '/' + selectedCell[1] + '/' + player.id)
+            fetch(`${baseUrl}/tictactoe/check/${selectedCell[0]}/${selectedCell[1]}/${player.id}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {

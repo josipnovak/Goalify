@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './HigherLower.css';
+import { baseUrl } from '../App';
 
 function HigherLower(){
     const [leftPlayer, setLeftPlayer] = useState({});
@@ -12,7 +13,7 @@ function HigherLower(){
     }, []);
 
     function fetchPlayerOnLoad(){
-        fetch('http://localhost:8080/higherlower/player/')
+        fetch(`${baseUrl}/higherlower/player/`)
             .then(response => response.json())
             .then(data => {
                 if (data) {
@@ -25,7 +26,7 @@ function HigherLower(){
     }
 
     function fetchPlayerForGame(){
-        fetch('http://localhost:8080/higherlower/player/')
+        fetch(`${baseUrl}/higherlower/player/`)
             .then(response => response.json())
             .then(data => {
                 if (data) {
@@ -39,7 +40,7 @@ function HigherLower(){
     }
 
     function handleHigherLowerClick(isHigher){
-        fetch(`http://localhost:8080/higherlower/check/${leftPlayer.id}/${rightPlayer.id}/${isHigher}`)
+        fetch(`${baseUrl}/higherlower/check/${leftPlayer.id}/${rightPlayer.id}/${isHigher}`)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {

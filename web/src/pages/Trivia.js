@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Trivia.css'
+import { baseUrl } from '../App';
 function Trivia(){
     const [question, setQuestion] = useState([]);
     const [result, setResult] = useState(false);
     const [score, setScore] = useState(0);
 
     async function fetchQuestion() {
-        fetch('http://localhost:8080/questions/random')
+        fetch(`${baseUrl}/questions/random`)
             .then(response => response.json())
             .then(setQuestion)
             .catch(error => console.error('Error fetching trivia questions:', error));
@@ -20,7 +21,7 @@ function Trivia(){
     const handleSubmit = async (option) => {
         if (!question.id) return;
         try {
-            const res = await fetch(`http://localhost:8080/check_question/${question.id}/${option}`);
+            const res = await fetch(`${baseUrl}/check_question/${question.id}/${option}`);
             const data = await res.json();
             setResult(data);
             if(data.correct) {

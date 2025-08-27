@@ -34,3 +34,4 @@ function App() {
 }
 
 export default App;
+export const baseUrl = 'https://goalify-v1o3.onrender.com';
